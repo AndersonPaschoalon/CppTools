@@ -1,5 +1,6 @@
 #include "StrBuffer.h"
 
+// ok
 StrBuffer::StrBuffer()
 {
 	this->strSize = 0;
@@ -9,6 +10,7 @@ StrBuffer::StrBuffer()
 	memset(this->str, '\0', this->initBufferSize);
 }
 
+// ok
 StrBuffer::StrBuffer(long int size)
 {
 	this->strSize = 0;
@@ -18,11 +20,13 @@ StrBuffer::StrBuffer(long int size)
 	memset(this->str, '\0', this->initBufferSize);
 }
 
+// Ok
 StrBuffer::~StrBuffer()
 {
-	delete this->str;
+	delete[] this->str;
 }
 
+// ok
 StrBuffer::StrBuffer(const char* filename, bool* success) : StrBuffer()
 {
 	char c;
@@ -49,6 +53,7 @@ StrBuffer::StrBuffer(const char* filename, bool* success) : StrBuffer()
 	*success = true;
 }
 
+// ok
 void StrBuffer::append(const char inChar)
 {
 	char str[2];
@@ -57,6 +62,7 @@ void StrBuffer::append(const char inChar)
 	this->append(str);
 }
 
+// ok
 void StrBuffer::append(const char* inStr)
 {
 	long int newLen = 0;
@@ -99,7 +105,8 @@ void StrBuffer::append(const char* inStr)
 	}
 }
 
-void StrBuffer::append(int count, ...)
+// ok
+void StrBuffer::appendVaList(int count, ...)
 {
 	va_list valist;
 	int n = 0;
@@ -117,7 +124,8 @@ void StrBuffer::append(int count, ...)
 	va_end(valist);
 }
 
-void StrBuffer::append(int argc, const char* argv[])
+// ok
+void StrBuffer::append(int argc, char** argv)
 {
 	int i = 0;
 	for (i = 0; i < argc; i++)
@@ -126,16 +134,19 @@ void StrBuffer::append(int argc, const char* argv[])
 	}
 }
 
+// ok
 const char* StrBuffer::ptr()
 {
 	return this->str;
 }
 
+// ok
 const long int StrBuffer::len()
 {
 	return this->strSize;
 }
 
+// ok
 const long int StrBuffer::bufferlen()
 {
 	return this->bufferSize;
@@ -153,15 +164,16 @@ void StrBuffer::clear()
 
 
 // remove white spaces
-void const StrBuffer::trim(int outMaxLen, __out char* strTrimmed)
+void const StrBuffer::trim()
 {
+	int i = 0;
 	int posStrTrimmed = 0;
-	memset(strTrimmed, '\0', outMaxLen);
+	//memset(this->str, '\0', this->bufferlen);
 	if (this->str == NULL)
 	{
 		return;
 	}
-	for (int i = 0; i < outMaxLen; i++)
+	for (i = 0; i < this->len(); i++)
 	{
 		if (i >= this->strSize)
 		{
@@ -170,20 +182,51 @@ void const StrBuffer::trim(int outMaxLen, __out char* strTrimmed)
 		if (this->str[i] != ' ' && this->str[i] != '\n' && this->str[i] != '\r' &&
 			this->str[i] != '\t' && this->str[i] != '\v' && this->str[i] != '\f')
 		{
-			strTrimmed[posStrTrimmed] = this->str[i];
+			this->str[posStrTrimmed] = this->str[i];
 			posStrTrimmed++;
+		}
+	}
+	this->append('\0');
+	int currPos = posStrTrimmed;
+	for (i = posStrTrimmed; i < this->bufferlen(); i++)
+	{
+		this->str[i] = '\0';
+	}
+	
+}
+
+// TODO
+void const StrBuffer::toUpper()
+{
+	int i = 0;
+	if (this->str == NULL || this->len() <= 0)
+	{
+		return;
+	}
+	else
+	{
+		for (i = 0; i < this->len(); i++)
+		{
+			this->str[i] = toupper(this->str[i]);
 		}
 	}
 }
 
 // TODO
-void const StrBuffer::toUpper(int outMaxLen, __out char* strUp)
+void const StrBuffer::toLower()
 {
-}
-
-// TODO
-void const StrBuffer::toLower(int outMaxLen, __out char* strLow)
-{
+	int i = 0;
+	if (this->str == NULL || this->len() <= 0)
+	{
+		return;
+	}
+	else
+	{
+		for (i = 0; i < this->len(); i++)
+		{
+			this->str[i] = tolower(this->str[i]);
+		}
+	}
 }
 
 // compare strings
@@ -199,24 +242,176 @@ bool const StrBuffer::equals(const char* str)
 //TODO
 bool const StrBuffer::startsWith(const char* str)
 {
+	int i = 0;
+	int strCmpLen = strlen(str);
+	for (i = 0; i < strCmpLen; i++)
+	{
+		if (i >= this->len() - 1)
+		{
+			return false;
+		}
+		if (this->str[i] == str[i])
+		{
+			continue;
+		}
+		else
+		{
+			return false;
+		}
+	}
 	return true;
 }
 
 //TODO
 bool const StrBuffer::endsWith(const char* str)
 {
+	int i = 0;
+	int strPos = this->len();
+	int strCmpLen = strlen(str);
+	int startPos = strPos - strCmpLen;
+	if (startPos < 0)
+	{
+		return false;
+	}
+	else
+	{
+		for (i = 0; i < strCmpLen; i++)
+		{
+			if (this->str[startPos + i] != str[i])
+			{
+				return false;
+			}
+		}
+	}
 	return true;
 }
 
 //TODO
+/*
 void const StrBuffer::replace(const char* pattern, const char* replaceWith)
 {
+	int i = 0;
+	int patternLen = 0;
+	int startPos = 0;
+	int stopPos = 0;
+	int currPos = 0;
+	bool isMatch = false;
+	bool isEmpyt = false;
+	StrBuffer strPt1 = StrBuffer();
+	StrBuffer strPt2 = StrBuffer();
+
+	if (pattern == NULL)
+	{
+		return;
+	}
+	if (replaceWith == NULL)
+	{
+		isEmpyt = true;
+	}
+	else if (replaceWith[0] == '\0')
+	{
+		isEmpyt = true;
+	}
+	patternLen = strlen(pattern);
+	if (patternLen == 0)
+	{
+		return;
+	}
+	// calc the pstartPosition 
+	for (i = 0; i < this->len(); i++)
+	{
+		if (currPos == (patternLen - 1) )
+		{
+			isMatch = true;
+			stopPos = i;
+			break;
+		}
+		if (this->str[i] == pattern[currPos])
+		{
+			if (currPos == 0)
+			{
+				startPos = i;
+			}
+			currPos++;
+		}
+		else
+		{
+			currPos = 0;
+			startPos = 0;
+		}
+	}
+	int firstStrLen = startPos + 1;
+	int secondStrLen = this->len() - startPos - patternLen;
+	char* strPt1 = new char[firstStrLen];
+	char* strPt2 = new char[secondStrLen];
+	for (i = 0; i < this->len(); i++)
+	{
+		if (i < startPos)
+		{
+			strPt1[i] = this->str[i];
+		}
+		else if (i > startPos + patternLen)
+		{
+			strPt2[i] = this->str[i];
+		}
+	}
+	delete this->str;
+	int newLen = 0;
+	if (isEmpyt == true)
+	{
+		newLen = firstStrLen + secondStrLen;
+	}
+	else
+	{
+		newLen = firstStrLen + secondStrLen + strlen(replaceWith);
+	}
+	// re-initializes
+	this->strSize = 0;
+	this->initBufferSize = newLen + 1;
+	this->bufferSize = this->initBufferSize;
+	this->str = new char[this->initBufferSize];
+	memset(this->str, '\0', this->initBufferSize);
+	// append new values
+	this->appendVaList(3, strPt1, replaceWith, strPt2);
+
 }
+*/
 
 //TODO
 bool const StrBuffer::contains(const char* str)
 {
-	return true;
+	int i = 0;
+	int strLen = 0;
+	int currPos = 0;
+	if (str == NULL)
+	{
+		return false;
+	}
+	else if (str[0] == '\0')
+	{
+		return true;
+	}
+	strLen = strlen(str);
+	if (strLen > this->len())
+	{
+		return false;
+	}
+	for (i = 0; i < this->len(); i++)
+	{
+		if (currPos == strLen)
+		{
+			return true;
+		}
+		if (this->str[i] == str[i])
+		{
+			currPos++;
+		}
+		else
+		{
+			currPos = 0;
+		}
+	}
+	return false;
 }
 
 //TODO

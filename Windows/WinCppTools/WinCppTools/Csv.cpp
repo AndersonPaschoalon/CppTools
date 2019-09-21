@@ -1,6 +1,5 @@
 #include "Csv.h"
 
-
 // fileName: csv file name. Delimiter:",", comment: "#"
 Csv::Csv(const char* fileName, CsvError *err)
 {

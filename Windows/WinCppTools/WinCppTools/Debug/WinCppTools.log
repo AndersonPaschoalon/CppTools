@@ -1,8 +1,17 @@
-﻿  WinCppTools.cpp
+﻿  Csv.cpp
+C:\Users\anderson\Workspace\CppTools\Windows\WinCppTools\WinCppTools\StrBuffer.h(69,8): warning C4114:  mesmo qualificador de tipo usado mais de uma vez
+C:\Users\anderson\Workspace\CppTools\Windows\WinCppTools\WinCppTools\StrBuffer.h(72,8): warning C4114:  mesmo qualificador de tipo usado mais de uma vez
+  StrBuffer.cpp
+C:\Users\anderson\Workspace\CppTools\Windows\WinCppTools\WinCppTools\StrBuffer.h(75,8): warning C4114:  mesmo qualificador de tipo usado mais de uma vez
+C:\Users\anderson\Workspace\CppTools\Windows\WinCppTools\WinCppTools\StrBuffer.h(69,8): warning C4114:  mesmo qualificador de tipo usado mais de uma vez
+C:\Users\anderson\Workspace\CppTools\Windows\WinCppTools\WinCppTools\StrBuffer.h(72,8): warning C4114:  mesmo qualificador de tipo usado mais de uma vez
+  main.cpp
+C:\Users\anderson\Workspace\CppTools\Windows\WinCppTools\WinCppTools\StrBuffer.h(75,8): warning C4114:  mesmo qualificador de tipo usado mais de uma vez
 C:\Users\anderson\Workspace\CppTools\Windows\WinCppTools\WinCppTools\StrBuffer.h(69,8): warning C4114:  mesmo qualificador de tipo usado mais de uma vez
 C:\Users\anderson\Workspace\CppTools\Windows\WinCppTools\WinCppTools\StrBuffer.h(72,8): warning C4114:  mesmo qualificador de tipo usado mais de uma vez
 C:\Users\anderson\Workspace\CppTools\Windows\WinCppTools\WinCppTools\StrBuffer.h(75,8): warning C4114:  mesmo qualificador de tipo usado mais de uma vez
-C:\Users\anderson\Workspace\CppTools\Windows\WinCppTools\WinCppTools\WinCppTools.cpp(13,2): warning C4002:  muitos argumentos para a invocação de macro de função 'TEST_ASSERT_EQUAL_INT'
-C:\Users\anderson\Workspace\CppTools\Windows\WinCppTools\WinCppTools\WinCppTools.cpp(19,2): warning C4002:  muitos argumentos para a invocação de macro de função 'TEST_ASSERT_EQUAL_INT'
-C:\Users\anderson\Workspace\CppTools\Windows\WinCppTools\WinCppTools\WinCppTools.cpp(26,2): warning C4002:  muitos argumentos para a invocação de macro de função 'TEST_ASSERT_EQUAL_STRING'
+C:\Users\anderson\Workspace\CppTools\Windows\WinCppTools\WinCppTools\main.cpp(53,2): warning C4002:  muitos argumentos para a invocação de macro de função 'TEST_ASSERT_EQUAL_INT'
+C:\Users\anderson\Workspace\CppTools\Windows\WinCppTools\WinCppTools\main.cpp(59,2): warning C4002:  muitos argumentos para a invocação de macro de função 'TEST_ASSERT_EQUAL_INT'
+  Gerando Código...
+C:\Users\anderson\Workspace\CppTools\Windows\WinCppTools\WinCppTools\main.cpp(66,2): warning C4002:  muitos argumentos para a invocação de macro de função 'TEST_ASSERT_EQUAL_STRING'
   WinCppTools.vcxproj -> C:\Users\anderson\Workspace\CppTools\Windows\WinCppTools\Debug\WinCppTools.exe

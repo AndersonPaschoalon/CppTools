@@ -27,22 +27,22 @@ public:
 	void append(const char* str);
 
 	// concat a vector of strings on the string buffer. reallocate memory automatically.
-	void append(int argc, const char* argv[]);
+	void append(int argc, char** argv);
 
 	// concat "count" strings passed as argument on the string buffer. reallocate memory automatically.
-	void append(int count, ...);
+	void appendVaList(int count, ...);
 
-	// TODO
+	// ok!
 	void clear();
 
-	// TODO
-	void const trim(int outMaxLen, __out char* strTrimmed);
+	// ok!
+	void const trim();
 
-	// TODO
-	void const toUpper(int outMaxLen, __out char* strUp);
+	// ok!
+	void const toUpper();
 
-	// TODO
-	void const toLower(int outMaxLen, __out char* strLow);
+	// ok!
+	void const toLower();
 
 	//TODO
 	bool const equals(const char* str);
@@ -57,7 +57,7 @@ public:
 	bool const endsWith(const char* str);
 
 	//TODO
-	void const replace(const char* pattern, const char* replaceWith);
+	//void const replace(const char* pattern, const char* replaceWith);
 
 	//TODO
 	void const substring(int start, int length, __out char* subString);
@@ -76,6 +76,28 @@ public:
 
 
 private:
+
+	// TODO
+	/* TESTS
+	char* str[10];
+	for (int i = 0; i < 10; i++)
+	{
+		str[i] = new char[15];
+		sprintf(str[i], "%d", i);
+		if (i < 5)
+		{
+			strcat(str[i], "aaaa");
+		}
+		else
+		{
+			strcat(str[i], "bbb");
+		}
+	}
+	buffer.append(10, str);
+	printf("buffer:%s, len:%ld, bufferlen:%ld\n", buffer.ptr(), buffer.len(), buffer.bufferlen());
+	**/
+
+
 	long int initBufferSize;
 	long int bufferSize;
 	long int strSize;
