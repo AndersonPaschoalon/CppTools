@@ -1,5 +1,7 @@
 #pragma once
 #include <list>
+#include <string>
+#include <map>
 #include "StrBuffer.h"
 
 
@@ -13,7 +15,7 @@ public:
 	{
 		CANNOT_OPEN_FILE,
 		INVALID_CSV_FORMAT,
-		NULL_CSV_POINTER
+		NULL_CSV_POINTER,
 	};
 
 	// fileName: csv file name. Delimiter:",", comment: "#"
@@ -37,8 +39,25 @@ public:
 private:
 
 	int nLines;
-	int maxCols;
-	char* csvMatrix;
+	int nCols;
+	StrBuffer* csvMatrix;
+	map<char*, int>* namesToCols;
+
+	/**
+	 * Recover the next string between delimiters, in a StrBuffer object.
+	 */
+	bool helperGetEntry(const char* strCsvFile, 
+		                int strLen, 
+		                char delimiter, 
+		                char comment,
+		                bool hasHeader,
+		                int& startPosition,
+		                StrBuffer* outStrBuffer);
+
+	/**
+	 * Helps to calc the position on a linearized matrix. 
+	 */
+	int helperCellNumber(int col, int line);
 
 };
 

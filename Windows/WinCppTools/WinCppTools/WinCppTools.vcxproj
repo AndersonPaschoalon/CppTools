@@ -155,6 +155,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Console.cpp" />
     <ClCompile Include="Csv.cpp" />
     <ClCompile Include="DoubleBuffer.cpp" />
     <ClCompile Include="ini.cpp" />
@@ -166,6 +167,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Console.h" />
     <ClInclude Include="Csv.h" />
     <ClInclude Include="DoubleBuffer.h" />
     <ClInclude Include="ini.h" />
