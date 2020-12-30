@@ -1,3 +1,5 @@
+/*
+
 #pragma once
 #include <list>
 #include <string>
@@ -43,9 +45,7 @@ private:
 	StrBuffer* csvMatrix;
 	map<char*, int>* namesToCols;
 
-	/**
-	 * Recover the next string between delimiters, in a StrBuffer object.
-	 */
+	//Recover the next string between delimiters, in a StrBuffer object.
 	bool helperGetEntry(const char* strCsvFile, 
 		                int strLen, 
 		                char delimiter, 
@@ -54,10 +54,10 @@ private:
 		                int& startPosition,
 		                StrBuffer* outStrBuffer);
 
-	/**
-	 * Helps to calc the position on a linearized matrix. 
-	 */
+
+	// Helps to calc the position on a linearized matrix. 
 	int helperCellNumber(int col, int line);
 
 };
 
+*/

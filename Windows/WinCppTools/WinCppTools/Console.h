@@ -1,20 +1,57 @@
 #pragma once
+#include <iostream>
+#include <stdexcept>
+#include <stdio.h>
+#include <list>
+#include <string>
+#include <thread>
+#include <mutex>
+#include <string>
+
+//#include <sys/wait.h>
+
+#include "StrBuffer.h"
+
+const char ERRMSG_POPEN[] = "popen() failed!";
+const char ERRMSG_FGETS[] = "fgets() failed!";
+
 class Console
 {
 public:
+
+	// constructor/destructor
 	Console();
+	~Console();
 
-	int execBlock(const char* cmd);
+	// command console methods
+	//int exeBlock(const char* cmd);
+	//int exeNonBlock(const char* cmd);
+	int get(char* str);
+	bool hasFinished();
 
-	int execNonBlock(const char* cmd);
+	// echo methods
+	void cat(FILE* in);
 
-	bool hasCommandFinished();
+	//
+	void pwd(char* cmd);
 
-	int get(char* lastOutput);
+	int const SUCCESS = 0;
+	int const ERROR_POPEN = - 1;
+	int const ERROR_FGETS = -2;
+
+	int const exeBlock(const char* cmd, int strOutLen, char* strOut);
+	int const exeBlock(const char* cmd, StrBuffer* strOut);
+
+	int const helperExeBlock(const char* cmd, StrBuffer* cmdOut);
+	int  helperExeNonBlock(const char* cmd, char* cmdOut, int& cmdOutLen);
 
 private:
-	char* cmdLastOutput;
-	int cmdReturnCode;
-	bool hasCmdFinished;
+	char* cmdLastOut;
+	bool isCmdFinished;
+	bool isExecuting;
+	int cmdLastReturnCode;
+	bool needFree;
+
+
 };
 

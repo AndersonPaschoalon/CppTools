@@ -1,3 +1,4 @@
+/*
 #include "Csv.h"
 
 // fileName: csv file name. Delimiter:",", comment: "#"
@@ -249,4 +250,5 @@ bool Csv::helperGetEntry(const char* strCsvFile,
 	return true;
 }
 
+*/
 

@@ -8,6 +8,8 @@
 #include "INIReader.h"
 #define TEST_FILE_STRBUFFER "Test_StrBuffer.txt"
 
+#include "Console.h"
+
 // Print header
 void header(const char* str);
 
@@ -22,21 +24,66 @@ void test_StrBuffer();
 // ini File
 void test_Ini();
 
+// Console
+void test_ConsoleCmdBlock();
+
 int main()
 {
+	bool test01 = false;
+	bool test02 = false;
+	bool test03 = false;
+	bool test04 = true;
+	bool test05 = false;
+	bool test06 = false;
+	bool test07 = false;
+	bool test08 = false;
+	bool test09 = false;
+	bool test10 = false;
+	bool test11 = false;
+	bool test12 = false;
+	bool test13 = false;
+	bool test14 = false;
+	bool test15 = false;
+	bool test16 = false;
+	bool test17 = false;
+	bool test18 = false;
+	bool test19 = false;
+	bool test20 = false;
+
 	// unity 
-	header("Unity Tests");
-	//UNITY_BEGIN();
-	//RUN_TEST(test_AcertOk);
-	//RUN_TEST(test_String);
-	header("StrBuffer");
-	test_StrBuffer();
-	//header("Ini File");
-	//test_Ini();
+	if (test01)
+	{
+		header("Unity Tests");
+		UNITY_BEGIN();
+		RUN_TEST(test_AcertOk);
+		RUN_TEST(test_String);
+		return UNITY_END();
+	}
+
+	// StrBuffer
+	if (test02)
+	{
+		header("StrBuffer");
+		test_StrBuffer();
+	}
+
+	// Ini
+	if (test03)
+	{
+		header("Ini File");
+		test_Ini();
+	}
+
+	if (test04)
+	{
+		header("ConsoleCmdBlock");
+		test_ConsoleCmdBlock();
+	}
+
+
 
 	system("pause");
 	return 0;
-	//return UNITY_END();
 }
 
 void header(const char* str)
@@ -167,5 +214,27 @@ void test_Ini()
 			<< reader.GetReal("user", "pi", -1) << ", active="
 			<< reader.GetBoolean("user", "active", true) << "\n";
 	}
+
+}
+
+
+void test_ConsoleCmdBlock()
+{
+	int strOutLen = 0;
+	StrBuffer* buffer = new StrBuffer();
+	const char command[] = "dir";
+	Console console = Console();
+	console.helperExeBlock(command, buffer);
+	printf("command: %s\n", command);
+	printf("strOutLen: %d\n", buffer->len());
+	printf("strOut: %s\n", buffer->ptr());
+
+	char outVet1[20];
+	char outVet2[20000];
+
+	console.exeBlock(command, 20, outVet1);
+	console.exeBlock(command, 20000, outVet2);
+
+	delete buffer;
 
 }

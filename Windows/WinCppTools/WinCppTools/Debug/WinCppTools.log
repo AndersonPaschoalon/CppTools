@@ -1,16 +1,25 @@
 ﻿  Console.cpp
+C:\Users\anderson_paschoalon\Workspace\Personal\CppTools\Windows\WinCppTools\WinCppTools\StrBuffer.h(69,8): warning C4114: same type qualifier used more than once
+C:\Users\anderson_paschoalon\Workspace\Personal\CppTools\Windows\WinCppTools\WinCppTools\StrBuffer.h(72,8): warning C4114: same type qualifier used more than once
   Csv.cpp
-C:\Users\anderson\Workspace\CppTools\Windows\WinCppTools\WinCppTools\StrBuffer.h(69,8): warning C4114:  mesmo qualificador de tipo usado mais de uma vez
-C:\Users\anderson\Workspace\CppTools\Windows\WinCppTools\WinCppTools\StrBuffer.h(72,8): warning C4114:  mesmo qualificador de tipo usado mais de uma vez
-C:\Users\anderson\Workspace\CppTools\Windows\WinCppTools\WinCppTools\StrBuffer.h(75,8): warning C4114:  mesmo qualificador de tipo usado mais de uma vez
-C:\Users\anderson\Workspace\CppTools\Windows\WinCppTools\WinCppTools\Csv.cpp(128,2): error C2143:  erro de sintaxe: ';' ausente antes de 'while'
-C:\Users\anderson\Workspace\CppTools\Windows\WinCppTools\WinCppTools\Csv.cpp(133,93): error C2660:  'Csv::helperGetEntry': função não recebe 5 argumentos
-C:\Users\anderson\Workspace\CppTools\Windows\WinCppTools\WinCppTools\Csv.h(49,7): message :  consulte a declaração de 'Csv::helperGetEntry'
-C:\Users\anderson\Workspace\CppTools\Windows\WinCppTools\WinCppTools\Csv.cpp(138,31): error C2039:  'currentCell': não é um membro de 'Csv'
-C:\Users\anderson\Workspace\CppTools\Windows\WinCppTools\WinCppTools\Csv.h(9): message :  consulte a declaração de 'Csv'
-C:\Users\anderson\Workspace\CppTools\Windows\WinCppTools\WinCppTools\Csv.cpp(141,3): error C2059:  erro de sintaxe: 'if'
-C:\Users\anderson\Workspace\CppTools\Windows\WinCppTools\WinCppTools\Csv.cpp(142,3): error C2143:  erro de sintaxe: ';' ausente antes de '{'
-C:\Users\anderson\Workspace\CppTools\Windows\WinCppTools\WinCppTools\Csv.cpp(145,3): error C2181:  else inválido sem if correspondente
-C:\Users\anderson\Workspace\CppTools\Windows\WinCppTools\WinCppTools\Csv.cpp(198,47): error C2761:  'bool Csv::helperGetEntry(const char *,int,char,char,bool,int &,StrBuffer *)': a redeclaração de membro não é permitida
-  Gerando Código...
-C:\Users\anderson\Workspace\CppTools\Windows\WinCppTools\WinCppTools\Csv.cpp(199,1): error C2447:  '{': faltando cabeçalho de função (lista formal de estilo antigo?)
+  DoubleBuffer.cpp
+  ini.cpp
+  INIReader.cpp
+  IntBuffer.cpp
+  StrBuffer.cpp
+C:\Users\anderson_paschoalon\Workspace\Personal\CppTools\Windows\WinCppTools\WinCppTools\StrBuffer.h(75,8): warning C4114: same type qualifier used more than once
+C:\Users\anderson_paschoalon\Workspace\Personal\CppTools\Windows\WinCppTools\WinCppTools\StrBuffer.h(69,8): warning C4114: same type qualifier used more than once
+C:\Users\anderson_paschoalon\Workspace\Personal\CppTools\Windows\WinCppTools\WinCppTools\StrBuffer.h(72,8): warning C4114: same type qualifier used more than once
+  Utils.cpp
+  main.cpp
+C:\Users\anderson_paschoalon\Workspace\Personal\CppTools\Windows\WinCppTools\WinCppTools\StrBuffer.h(75,8): warning C4114: same type qualifier used more than once
+C:\Users\anderson_paschoalon\Workspace\Personal\CppTools\Windows\WinCppTools\WinCppTools\StrBuffer.h(69,8): warning C4114: same type qualifier used more than once
+C:\Users\anderson_paschoalon\Workspace\Personal\CppTools\Windows\WinCppTools\WinCppTools\StrBuffer.h(72,8): warning C4114: same type qualifier used more than once
+C:\Users\anderson_paschoalon\Workspace\Personal\CppTools\Windows\WinCppTools\WinCppTools\StrBuffer.h(75,8): warning C4114: same type qualifier used more than once
+C:\Users\anderson_paschoalon\Workspace\Personal\CppTools\Windows\WinCppTools\WinCppTools\main.cpp(100,2): warning C4002: too many arguments for function-like macro invocation 'TEST_ASSERT_EQUAL_INT'
+C:\Users\anderson_paschoalon\Workspace\Personal\CppTools\Windows\WinCppTools\WinCppTools\main.cpp(106,2): warning C4002: too many arguments for function-like macro invocation 'TEST_ASSERT_EQUAL_INT'
+  Generating Code...
+C:\Users\anderson_paschoalon\Workspace\Personal\CppTools\Windows\WinCppTools\WinCppTools\main.cpp(113,2): warning C4002: too many arguments for function-like macro invocation 'TEST_ASSERT_EQUAL_STRING'
+  unity.c
+     Creating library C:\Users\anderson_paschoalon\Workspace\Personal\CppTools\Windows\WinCppTools\Debug\WinCppTools.lib and object C:\Users\anderson_paschoalon\Workspace\Personal\CppTools\Windows\WinCppTools\Debug\WinCppTools.exp
+  WinCppTools.vcxproj -> C:\Users\anderson_paschoalon\Workspace\Personal\CppTools\Windows\WinCppTools\Debug\WinCppTools.exe
