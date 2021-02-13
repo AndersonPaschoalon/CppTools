@@ -1,25 +1,2 @@
-﻿  Console.cpp
-C:\Users\anderson_paschoalon\Workspace\Personal\CppTools\Windows\WinCppTools\WinCppTools\StrBuffer.h(69,8): warning C4114: same type qualifier used more than once
-C:\Users\anderson_paschoalon\Workspace\Personal\CppTools\Windows\WinCppTools\WinCppTools\StrBuffer.h(72,8): warning C4114: same type qualifier used more than once
-  Csv.cpp
-  DoubleBuffer.cpp
-  ini.cpp
-  INIReader.cpp
-  IntBuffer.cpp
-  StrBuffer.cpp
-C:\Users\anderson_paschoalon\Workspace\Personal\CppTools\Windows\WinCppTools\WinCppTools\StrBuffer.h(75,8): warning C4114: same type qualifier used more than once
-C:\Users\anderson_paschoalon\Workspace\Personal\CppTools\Windows\WinCppTools\WinCppTools\StrBuffer.h(69,8): warning C4114: same type qualifier used more than once
-C:\Users\anderson_paschoalon\Workspace\Personal\CppTools\Windows\WinCppTools\WinCppTools\StrBuffer.h(72,8): warning C4114: same type qualifier used more than once
-  Utils.cpp
-  main.cpp
-C:\Users\anderson_paschoalon\Workspace\Personal\CppTools\Windows\WinCppTools\WinCppTools\StrBuffer.h(75,8): warning C4114: same type qualifier used more than once
-C:\Users\anderson_paschoalon\Workspace\Personal\CppTools\Windows\WinCppTools\WinCppTools\StrBuffer.h(69,8): warning C4114: same type qualifier used more than once
-C:\Users\anderson_paschoalon\Workspace\Personal\CppTools\Windows\WinCppTools\WinCppTools\StrBuffer.h(72,8): warning C4114: same type qualifier used more than once
-C:\Users\anderson_paschoalon\Workspace\Personal\CppTools\Windows\WinCppTools\WinCppTools\StrBuffer.h(75,8): warning C4114: same type qualifier used more than once
-C:\Users\anderson_paschoalon\Workspace\Personal\CppTools\Windows\WinCppTools\WinCppTools\main.cpp(100,2): warning C4002: too many arguments for function-like macro invocation 'TEST_ASSERT_EQUAL_INT'
-C:\Users\anderson_paschoalon\Workspace\Personal\CppTools\Windows\WinCppTools\WinCppTools\main.cpp(106,2): warning C4002: too many arguments for function-like macro invocation 'TEST_ASSERT_EQUAL_INT'
-  Generating Code...
-C:\Users\anderson_paschoalon\Workspace\Personal\CppTools\Windows\WinCppTools\WinCppTools\main.cpp(113,2): warning C4002: too many arguments for function-like macro invocation 'TEST_ASSERT_EQUAL_STRING'
-  unity.c
-     Creating library C:\Users\anderson_paschoalon\Workspace\Personal\CppTools\Windows\WinCppTools\Debug\WinCppTools.lib and object C:\Users\anderson_paschoalon\Workspace\Personal\CppTools\Windows\WinCppTools\Debug\WinCppTools.exp
-  WinCppTools.vcxproj -> C:\Users\anderson_paschoalon\Workspace\Personal\CppTools\Windows\WinCppTools\Debug\WinCppTools.exe
+﻿     Creating library C:\Users\anderson_paschoalon\Workspace\_Personal\CppTools\Windows\WinCppTools\Debug\WinCppTools.lib and object C:\Users\anderson_paschoalon\Workspace\_Personal\CppTools\Windows\WinCppTools\Debug\WinCppTools.exp
+  WinCppTools.vcxproj -> C:\Users\anderson_paschoalon\Workspace\_Personal\CppTools\Windows\WinCppTools\Debug\WinCppTools.exe

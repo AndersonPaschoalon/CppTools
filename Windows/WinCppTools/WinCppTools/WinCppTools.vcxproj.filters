@@ -18,92 +18,100 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Csv.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="ini.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="INIReader.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="StrBuffer.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="Utils.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="unity.c">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="IntBuffer.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="DoubleBuffer.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="Console.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Csv.h">
+    <ClInclude Include="include\Console.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="ini.h">
+    <ClInclude Include="include\Csv.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="INIReader.h">
+    <ClInclude Include="include\Defines.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="StrBuffer.h">
+    <ClInclude Include="include\DoubleBuffer.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="types.h">
+    <ClInclude Include="include\ini.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="Utils.h">
+    <ClInclude Include="include\INIReader.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="unity.h">
+    <ClInclude Include="include\IntBuffer.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="unity_internals.h">
+    <ClInclude Include="include\rapidxml.hpp">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="rapidxml.hpp">
+    <ClInclude Include="include\rapidxml_iterators.hpp">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="rapidxml_iterators.hpp">
+    <ClInclude Include="include\rapidxml_print.hpp">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="rapidxml_print.hpp">
+    <ClInclude Include="include\rapidxml_utils.hpp">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="rapidxml_utils.hpp">
+    <ClInclude Include="include\StrBuffer.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="IntBuffer.h">
+    <ClInclude Include="include\unity.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="DoubleBuffer.h">
+    <ClInclude Include="include\unity_internals.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="Console.h">
+    <ClInclude Include="include\sys\wait.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Namespaces.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Types.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\cppfunctions.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Test_StrBuffer.txt">
-      <Filter>TestFiles</Filter>
-    </Text>
+    <ClCompile Include="src\Console.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Csv.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DoubleBuffer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ini.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\INIReader.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\IntBuffer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\StrBuffer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\unity.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cppfunctions.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Test_Ini.ini">
-      <Filter>TestFiles</Filter>
+    <None Include="res\Source.def">
+      <Filter>src</Filter>
     </None>
+    <None Include="res\Test_Ini.ini" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="res\Test_StrBuffer.txt" />
   </ItemGroup>
 </Project>
