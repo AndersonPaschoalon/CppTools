@@ -1,4 +1,4 @@
-#include "utils/StringUtils.h"
+#include "StringUtils.h"
 
 
 std::string StringUtils::toLower(const char *strIn)
@@ -45,3 +45,25 @@ std::string StringUtils::trimCopy(std::string s)
     StringUtils::trim(s);
     return s;
 }
+
+const std::string StringUtils::toHexString(unsigned long n)
+{
+    std::ostringstream ss;
+    ss << std::hex << std::uppercase << n;
+    return ss.str();
+}
+
+const std::string StringUtils::toHexString(unsigned int n)
+{
+    std::ostringstream ss;
+    ss << std::hex << std::uppercase << n;
+    return ss.str();
+}
+
+const std::string StringUtils::toHexString(unsigned short n)
+{
+    std::ostringstream ss;
+    ss << std::hex << std::uppercase << n;
+    return ss.str();
+}
+
