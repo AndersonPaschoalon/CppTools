@@ -2,7 +2,7 @@
 CXX=g++
 
 # Specify the flags to use for compiling C++ code
-CXXFLAGS=-std=c++11 -Wall -Wextra -pedantic -Iheaders
+CXXFLAGS=-std=c++11 -Wall -Wextra -pedantic -Iinclude/ -Iinclude/utils 
 
 # Specify the flags to use for creating a static library
 ARFLAGS=rcs
@@ -14,16 +14,24 @@ SRCS=$(wildcard src/*.cpp)
 OBJS=$(patsubst src/%.cpp,obj/%.o,$(SRCS))
 
 # Specify the name of the library to create
-LIB=bin/libcpputils.a
+LIB=bin/libcpptools.a
 
 # Specify the name of the shared library to create
-SHLIB=bin/libcpputils.so
+SHLIB=bin/libcpptools.so
+
+#pkg name
+PKG=cpptools
+
+# pkg version
+VERSION=0.0.0.1
+
+PKG_FILE=$(PKG)_$(VERSION).tar.gz
 
 # Specify the targets that are not files
-.PHONY: all clean
+.PHONY: all clean pkg
 
 # Specify the default target to build
-all: $(LIB) $(SHLIB)
+all: $(LIB) $(SHLIB) pkg
 
 # Specify the target to build the static library
 $(LIB): $(OBJS)
@@ -40,3 +48,12 @@ clean:
 # Specify the target to create object files from source files
 obj/%.o: src/%.cpp
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
+pkg:
+	mkdir -p pkg
+	tar -czvf $(PKG_FILE) bin/ include/
+	mv $(PKG_FILE)  pkg/
+
+
+
+
