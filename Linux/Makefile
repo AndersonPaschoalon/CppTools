@@ -1,9 +1,12 @@
 # Specify the C++ compiler to use
 CXX=g++
 
+# lib include directories
+LIB_INCLUDES=-Iinclude/ -Iinclude/console -Iinclude/csv -Iinclude/utils -Iinclude/unity  -Iinclude/thread
+
 # Specify the flags to use for compiling C++ code
-CXXFLAGS=-std=c++11 -Wall -Wextra -Wunused -pedantic -fPIC -Iinclude/ -Iinclude/utils -Iinclude/unity 
-#CXXFLAGS=-std=c++11 -Wall -Wextra -Wunused -pedantic -Iinclude/ -Iinclude/utils 
+CXXFLAGS=-std=c++11 -Wall -Wextra -Wunused -pedantic -fPIC $(LIB_INCLUDES)
+
 
 # Specify the flags to use for creating a static library
 ARFLAGS=rcs
@@ -12,7 +15,10 @@ ARFLAGS=rcs
 SRCS=$(wildcard src/*.cpp)
 
 # Specify the source files to compile
-UTEST_SRCS=$(wildcard test/*.cpp)
+UTEST_SRCS=$(wildcard test/src/*.cpp)
+
+# Specify the source files to compile
+UTEST_INCLUDES=-Itest/include
 
 # Specify the object files to create from the source files
 OBJS=$(patsubst src/%.cpp,obj/%.o,$(SRCS))
@@ -69,7 +75,7 @@ pkg:
 
 build-test: $(LIB) $(UTEST_SRCS)
 	printf "# Building Unity Tests..."
-	$(CXX) $(CXXFLAGS)  $(UTEST_SRCS) -o ${UTEST_EXE} $(LIB)
+	$(CXX) $(CXXFLAGS) $(UTEST_INCLUDES) $(UTEST_SRCS) -o ${UTEST_EXE} $(LIB)
 
 run-test:
 	printf "\n\n# Running Unity Tests...\n"
