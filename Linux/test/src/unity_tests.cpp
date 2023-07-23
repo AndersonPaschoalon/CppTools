@@ -4,6 +4,8 @@
 void test_trim();
 void test_printTable();
 void test_csvparser();
+void test_Console_executeCommandBlock();
+void test_Console_executeCommandAsync();
 
 int main()
 {
@@ -12,6 +14,10 @@ int main()
     RUN_TEST(test_trim);
     RUN_TEST(test_printTable);
     RUN_TEST(test_csvparser);
+
+    // test
+    RUN_TEST(test_Console_executeCommandBlock);
+    RUN_TEST(test_Console_executeCommandAsync);
 
     return UNITY_END();
 }
@@ -62,4 +68,45 @@ void test_csvparser()
     {
         std::cout << "Error loading file" << std::endl;
     }    
+}
+
+
+void test_Console_executeCommandBlock()
+{
+    std::string output;
+    int status = Console::executeCommandBlock("ls -lahn", output);
+
+    std::cout << "Command status code: " << status << std::endl;
+    std::cout << "Command output:" << std::endl << output << std::endl;
+
+    TEST_ASSERT_EQUAL_INT32(0, status);
+}
+
+void test_Console_executeCommandAsync()
+{
+    Console console;
+
+    if (console.executeCommandAsync("ls -lahn")) 
+    {
+        std::cout << "Command started." << std::endl;
+    } else 
+    {
+        std::cout << "Failed to start command." << std::endl;
+    }
+
+    // Wait for the command to finish
+    while (!console.hasCommandFinished()) 
+    {
+        // Do something else while waiting...
+        std::cout << "Waiting the execution to be completed, 1ms sleep..." << std::endl;
+        std::this_thread::sleep_for(std::chrono::milliseconds(1));
+    }
+
+    std::string output;
+    int status = console.commandResponse(output);
+
+    std::cout << "Command status code: " << status << std::endl;
+    std::cout << "Command output:" << std::endl << output << std::endl;
+
+    TEST_ASSERT_EQUAL_INT32(0, status); 
 }

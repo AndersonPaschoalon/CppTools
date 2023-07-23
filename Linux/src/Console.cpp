@@ -2,6 +2,9 @@
 
 Console::Console()
 {
+    this->commandInProgress = false;
+    this->stdOut.clear();
+    this->status = -1;
 }
 
 Console::~Console()
@@ -46,78 +49,99 @@ const void Console::printTable(std::vector<std::string> labels, std::vector<std:
     }
 }
 
-/*
-int Console::executeCommand(const char *command, int mode, std::string &stdOut)
+int Console::executeCommandBlock(const char *command, std::string &stdOut)
 {
-        std::lock_guard<std::mutex> lock(mutex_);
+    // NEED TEST!!!!
+    std::string cmdOutput;
+    char buffer[128];
 
-        if (mode == 0) {
-            FILE* pipe = popen(command, "r");
-            if (!pipe) 
-            {
-                return -1;
-            }
-
-            char buffer[128];
-            while (fgets(buffer, 128, pipe) != nullptr) {
-                stdOut += buffer;
-            }
-
-            return_code_ = pclose(pipe);
-            finished_ = true;
-
-            return return_code_;
-        }
-        else if (mode == 1) 
-        {
-            if (!finished_) 
-            {
-                return -1;
-            }
-
-            finished_ = false;
-
-            std::thread([this, command]() {
-                FILE* pipe = popen(command, "r");
-                if (!pipe) {
-                    return_code_ = -1;
-                    finished_ = true;
-                    return;
-                }
-
-                char buffer[128];
-                while (fgets(buffer, 128, pipe) != nullptr) {
-                    std::lock_guard<std::mutex> lock(mutex_);
-                    stdOut += buffer;
-                }
-
-                return_code_ = pclose(pipe);
-                finished_ = true;
-
-                std::unique_lock<std::mutex> lock(cv_mutex_);
-                finished_cv_.notify_one();
-            }).detach();
-
-            return 0;
-        }
-
+    // Open a pipe to the command and read its output
+    FILE* pipe = popen(command, "r");
+    if (!pipe) 
+    {
+        stdOut = "Error executing the command.";
         return -1;
+    }
+
+    // Read the command output into the buffer
+    while (fgets(buffer, sizeof(buffer), pipe) != NULL) 
+    {
+        cmdOutput += buffer;
+    }
+
+    // Close the pipe
+    int status = pclose(pipe);
+
+    // Set the output string
+    stdOut = cmdOutput;
+
+    // Return the command status
+    return status;
 }
 
-
-bool Console::commandFinished(std::string &stdOut, int &retCode)
+bool Console::executeCommandAsync(const char *command)
 {
-        std::lock_guard<std::mutex> lock(mutex_);
-
-        if (!finished_) {
-            return false;
+        std::unique_lock<std::mutex> lock(this->mtx);
+        if (this->commandInProgress) 
+        {
+            return false; // Command already running
         }
 
-        stdOut = stdOut_;
-        retCode = return_code_;
+        this->commandInProgress = true;
+        //this->stdOut.clear();
+        // this->status = -1;
 
-        finished_ = false;
+        // Launch a new thread to execute the command
+        std::thread t([this, command]() 
+        {
+            try 
+            {
+                // Open a pipe to the command and read its output
+                std::string cmdOutput;
+                char buffer[8192];
+                FILE* pipe = popen(command, "r");
+                if (!pipe) 
+                {
+                    throw std::runtime_error("Error executing the command.");
+                }
 
+                while (fgets(buffer, sizeof(buffer), pipe) != NULL) 
+                {
+                    cmdOutput += buffer;
+                }
+
+                int exitCode = pclose(pipe);
+
+                std::lock_guard<std::mutex> lock(this->mtx);
+                this->stdOut = cmdOutput;
+                this->status = WEXITSTATUS(exitCode);
+                this->commandInProgress = false;
+                cv.notify_all(); // Notify that the command has finished
+            } catch (const std::exception& ex) 
+            {
+                std::lock_guard<std::mutex> lock(this->mtx);
+                this->stdOut = "Error: ";
+                this->stdOut += ex.what();
+                this->status = -1;
+                this->commandInProgress = false;
+                cv.notify_all(); // Notify that the command has finished
+            }
+        });
+
+        t.detach();
         return true;
 }
-**/
+
+
+bool Console::hasCommandFinished()
+{
+    std::lock_guard<std::mutex> lock(this->mtx);
+    return !this->commandInProgress;
+}
+
+int Console::commandResponse(std::string &stdOutResp)
+{
+    std::lock_guard<std::mutex> lock(this->mtx);
+    stdOutResp = this->stdOut;
+    return this->status;
+}
