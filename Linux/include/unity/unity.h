@@ -5,7 +5,7 @@
 ========================================== */
 
 #ifndef UNITY_FRAMEWORK_H
-#define UNITY_FRAMEWORK_H
+#define UNITY_FRAMEWORK_H 1
 #define UNITY
 
 

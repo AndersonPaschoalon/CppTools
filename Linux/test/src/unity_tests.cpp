@@ -19,6 +19,10 @@ void test_Console_printTable();
 void test_Console_executeCommandBlock();
 void test_Console_executeCommandAsync();
 
+void test_plog_helloWorld();
+void test_plog_custom();
+
+
 
 int main()
 {
@@ -40,6 +44,10 @@ int main()
     RUN_TEST(test_Console_printTable);
     RUN_TEST(test_Console_executeCommandBlock);
     RUN_TEST(test_Console_executeCommandAsync);
+
+    RUN_TEST(test_plog_helloWorld);
+    // test_plog_custom
+    RUN_TEST(test_plog_custom);
 
     return UNITY_END();
 }
@@ -296,3 +304,46 @@ void test_Console_executeCommandAsync()
 
     TEST_ASSERT_EQUAL_INT32(0, status); 
 }
+
+
+//
+// PLOG
+//
+
+void test_plog_helloWorld()
+{
+    TEST_HEADER
+    plog::init(plog::debug, "test/Hello.log"); // Step2: initialize the logger
+
+    // Step3: write log messages using a special macro
+    // There are several log macros, use the macro you liked the most
+
+    PLOGD << "Hello log!"; // short macro
+    PLOG_DEBUG << "Hello log!"; // long macro
+    PLOG(plog::debug) << "Hello log!"; // function-style macro
+    
+    // Also you can use LOG_XXX macro but it may clash with other logging libraries
+    LOGD << "Hello log!"; // short macro
+    LOG_DEBUG << "Hello log!"; // long macro
+    LOG(plog::debug) << "Hello log!"; // function-style macro    
+}
+
+void test_plog_custom()
+{
+    TEST_HEADER
+    plog_easy_init(plog::debug, "test/custom_log.log");
+    _PLOG_NONE << "_PLOG_NONE";
+    _PLOG_FATAL << "_PLOG_FATAL";
+    _PLOG_ERROR << "_PLOG_N_PLOG_ERRORONE";
+    _PLOG_WARN << "_PLOG_WARN";
+    _PLOG_INFO << "_PLOG_INFO";
+    _PLOG_DEBUG << "_PLOG_DEBUG";
+    _PLOG_VERBOSE << "_PLOG_VERBOSE";
+
+
+}
+
+
+
+
+

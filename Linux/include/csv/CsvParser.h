@@ -1,8 +1,11 @@
+#ifndef __CSV_PARSER_H__
+#define __CSV_PARSER_H__ 1
+
 #include <iostream>
 #include <string>
 #include <vector>
 #include <cstring>
-#include "StringUtils.h"
+#include "../utils/StringUtils.h"
 
 class CsvParser 
 {
@@ -57,5 +60,5 @@ private:
 };
 
 
-
+#endif // __CSV_PARSER_H__
 

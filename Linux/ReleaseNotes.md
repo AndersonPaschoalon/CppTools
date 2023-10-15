@@ -9,9 +9,10 @@ Author: Anderson Paschoalon
 * New Features (MINOR):
     - Supports debug on VsCode enviroment. Just run debug_cpptools.
     - TEST_HEADER on unity tests.
-    - CsvParser: new methods
-    - StringUtils: new methods
-    - new unity tests
+    - CsvParser: new methods.
+    - StringUtils: new methods.
+    - new unity tests.
+    - now, supports PLOG.
 
 * Bug Fixes (PATCH):
     - CscParser class fixed;
@@ -20,7 +21,9 @@ Author: Anderson Paschoalon
     - N/A
 
 * Known Issues:
-
+    - Wild log not yet supported
+    - Rapdixml not yet supported
+    - a lot of warnings
 
 
 ----
