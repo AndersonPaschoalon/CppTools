@@ -1,0 +1,30 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build_debug_utest",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-g",
+                "-std=c++11",
+                "-Wall",
+                "-Wextra",
+                "-Wunused",
+                "-pedantic",
+                "-fPIC",
+                "${workspaceFolder}/test/src/unity_tests.cpp",
+                "${workspaceFolder}/src/*.cpp",
+                "-o",
+                "${workspaceFolder}/test/debug_utest.exe",
+                "-I${workspaceFolder}/include/",
+                "-I${workspaceFolder}/include/console/",
+                "-I${workspaceFolder}/include/csv/",
+                "-I${workspaceFolder}/include/utils/",
+                "-I${workspaceFolder}/include/unity/",
+                "-I${workspaceFolder}/include/thread/"
+            ],
+            "group": "build"
+        }
+    ]
+}

@@ -67,3 +67,65 @@ const std::string StringUtils::toHexString(unsigned short n)
     return ss.str();
 }
 
+const std::string StringUtils::toString(std::vector<std::string> vec)
+{
+    std::string result;
+    for (const auto &str : vec)
+    {
+        result += str + ", ";
+    }
+    // Remove the last ", " added
+    if (!result.empty())
+    {
+        result.erase(result.size() - 2);
+    }
+    return result;
+}
+
+const std::string StringUtils::toString(std::list<std::string> vec)
+{
+    std::string result;
+    for (const auto &str : vec)
+    {
+        result += str + ", ";
+    }
+    // Remove the last ", " added
+    if (!result.empty())
+    {
+        result.erase(result.size() - 2);
+    }
+    return result;
+}
+
+const bool StringUtils::toBool(const char *str)
+{
+    // Convert the string to lowercase for case-insensitive comparison
+    std::string sStr = str;
+    std::string lowercaseStr;
+    for (char c : sStr) {
+        lowercaseStr += std::tolower(c);
+    }
+
+    // Interpret "true", "1" as true, anything else (including empty string) as false
+    return (lowercaseStr == "true" || lowercaseStr == "1");
+}
+
+const bool StringUtils::startsWith(const std::string &fullString, const std::string &startString)
+{
+    if (fullString.length() < startString.length()) 
+    {
+        return false;
+    }
+    return fullString.substr(0, startString.length()) == startString;
+}
+
+const bool StringUtils::endsWith(const char *fullString, const char *endString)
+{
+    int fullLength = strlen(fullString);
+    int endLength = strlen(endString);
+
+    if (fullLength < endLength)
+        return 0;
+
+    return (strcmp(fullString + fullLength - endLength, endString) == 0);
+}

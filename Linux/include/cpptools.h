@@ -17,6 +17,7 @@
 #include "unity/unity.h"
 #include "unity/unity.h"
 #include "unity/unity_internals.h"
+#include "unity/unity_custom.h"
 
 // Rapidxml
 // #include "rapidxml/rapidxml.hpp"

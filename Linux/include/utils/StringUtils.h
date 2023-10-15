@@ -4,10 +4,11 @@
 #include <iomanip>
 #include <sstream>
 #include <string>
-#include <string>
+#include <list>
+#include <vector>
 #include <algorithm>
 #include <cctype>
-#include <cstdio>    // For remove()
+#include <cstring>
 
 
 class StringUtils
@@ -15,7 +16,7 @@ class StringUtils
     public:
 
         //
-        // String operations
+        // string manipulation
         //
 
         static std::string toLower(const char* str);
@@ -32,12 +33,28 @@ class StringUtils
 
         static std::string trimCopy(std::string s);
 
+        //
+        // type to string operations
+        //
+
         const static std::string toHexString(unsigned long n);
 
         const static std::string toHexString(unsigned int n);
         
         const static std::string toHexString(unsigned short n);
 
+        const static std::string toString(std::vector<std::string> vec);
+        
+        const static std::string toString(std::list<std::string> vec);
+
+        const static bool toBool(const char* str);
+
+        //
+        // check and tests
+        //
+
+        const static bool startsWith(const std::string &fullString, const std::string &startString); 
+        const static bool endsWith(const char *fullString, const char *endString);
 
     private:
 

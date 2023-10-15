@@ -38,7 +38,7 @@ BIN_DIR=bin
 PKG=cpptools
 
 # pkg version
-VERSION=0.0.0.1
+VERSION=0.1.0.0
 
 # lib package
 PKG_FILE=$(PKG)_$(VERSION).tar.gz
