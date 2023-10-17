@@ -19,7 +19,19 @@ class StringUtils
         // string manipulation
         //
 
-        static std::string toLower(const char* str);
+
+        // deprecated
+        //static std::string toLower(const char* str);
+
+        void toLower(std::string& str);
+
+        void toUpper(std::string& str);
+
+        std::string toLowerCopy(const char* str);
+
+        std::string toUpperCopy(const char* str);
+
+
 
         static void lTrim(std::string &s);
 

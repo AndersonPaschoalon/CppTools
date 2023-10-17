@@ -1,10 +1,10 @@
 ----
 
-Version 0.1.0.0-dev
+Version 1.0.0.0-dev
 Author: Anderson Paschoalon
 
 * Major Changes (MAJOR):
-    - N/A
+    - Signature of `StringUtils::toLower` changed from `static std::string toLower(const char* str)` to `void toLower(std::string& str)`. 
 
 * New Features (MINOR):
     - Supports debug on VsCode enviroment. Just run debug_cpptools.

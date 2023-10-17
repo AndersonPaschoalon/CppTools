@@ -15,6 +15,8 @@ public:
 
     ~CsvParser();
 
+    std::string toString();
+
     int load(const char* csv_file);
 
     int save(const char *fileName);

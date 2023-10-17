@@ -1,12 +1,41 @@
 #include "StringUtils.h"
 
 
-std::string StringUtils::toLower(const char *strIn)
+//std::string StringUtils::toLower(const char *strIn)
+//{
+//    std::string str(strIn);
+//    std::transform(str.begin(), str.end(), str.begin(), [](unsigned char c) { return std::tolower(c); });
+//    return str;
+//}
+
+void StringUtils::toLower(std::string &str)
 {
-    std::string str(strIn);
-    std::transform(str.begin(), str.end(), str.begin(), [](unsigned char c) { return std::tolower(c); });
-    return str;
+    for (char& c : str) {
+        c = tolower(c);
+    }    
 }
+
+void StringUtils::toUpper(std::string &str)
+{
+    for (char& c : str) {
+        c = toupper(c);
+    }    
+}
+
+std::string StringUtils::toLowerCopy(const char *str)
+{
+    std::string result(str);
+    StringUtils::toLower(result);
+    return result;
+}
+
+std::string StringUtils::toUpperCopy(const char *str)
+{
+    std::string result(str);
+    StringUtils::toUpper(result);
+    return result;
+}
+
 
 void StringUtils::lTrim(std::string &s)
 {

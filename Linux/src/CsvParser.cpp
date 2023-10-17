@@ -10,6 +10,11 @@ CsvParser::~CsvParser()
 {
 }
 
+std::string CsvParser::toString()
+{
+    return StringUtils::toString(this->headers_names);
+}
+
 int CsvParser::load(const char *csv_file)
 {
     FILE* file = fopen(csv_file, "r");
@@ -45,8 +50,13 @@ int CsvParser::load(const char *csv_file)
         if(hasHeader)
         {
             this->headers_names = this->data[0];
-            this->data.erase(this->data.begin());  // Remove headers from data
-            std::cout << "headers_names: " << StringUtils::toString(this->headers_names) << std::endl;
+            // Remove headers from data
+            this->data.erase(this->data.begin());  
+            //std::cout << "headers_names: " << StringUtils::toString(this->headers_names) << std::endl;
+            // remove the header marker from the first label
+            this->headers_names[0].erase(0, 1);
+            // make sure it does not starts with whitespaces
+            StringUtils::trim(this->headers_names[0]);
         }
     }
 
