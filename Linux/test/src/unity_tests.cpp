@@ -1,10 +1,16 @@
 #include <assert.h> 
+#include <cassert>
+#include <iostream>
 #include "cpptools.h"
 
 
 void test_StringUtils_startsWith();
 void test_StringUtils_trim();
 void test_StringUtils_bool();
+void testToLower();
+void testToUpper();
+void testToLowerCopy();
+void testToUpperCopy();
 
 void test_CsvParser_load();
 void test_CsvParser_get();
@@ -22,6 +28,7 @@ void test_Console_executeCommandAsync();
 void test_plog_helloWorld();
 void test_plog_custom();
 
+void cleanup();
 
 
 int main()
@@ -46,10 +53,18 @@ int main()
     RUN_TEST(test_Console_executeCommandAsync);
 
     RUN_TEST(test_plog_helloWorld);
-    // test_plog_custom
     RUN_TEST(test_plog_custom);
 
+    cleanup();
     return UNITY_END();
+}
+
+
+void cleanup()
+{
+    system("rm test/csvParserUnityTest.csv");
+    system("rm test/Hello.log");
+    system("rm test/custom_log.log");
 }
 
 
@@ -215,8 +230,8 @@ void test_StringUtils_trim()
 void test_StringUtils_startsWith()
 {
     TEST_HEADER
-    std::string fullString = "Hello, World!";
-    std::string startString = "Hello";
+    const char* fullString = "Hello, World!";
+    const char* startString = "Hello";
     bool testRes = StringUtils::startsWith(fullString, startString);
     if (testRes) 
     {
@@ -245,6 +260,45 @@ void test_StringUtils_bool()
     std::cout << "zeroStr as bool: " << std::boolalpha << StringUtils::toBool(zeroStr.c_str()) << std::endl; // false
     std::cout << "emptyStr as bool: " << std::boolalpha << StringUtils::toBool(emptyStr.c_str()) << std::endl; // true    
 }
+
+
+void testToLower() 
+{
+    TEST_HEADER
+    std::string str = "Hello World";
+    StringUtils::toLower(str);
+    assert(str == "hello world");
+    std::cout << "toLower test passed.\n";
+}
+
+void testToUpper() 
+{
+    TEST_HEADER
+    std::string str = "Hello World";
+    StringUtils::toUpper(str);
+    assert(str == "HELLO WORLD");
+    std::cout << "toUpper test passed.\n";
+}
+
+void testToLowerCopy()
+{
+    TEST_HEADER
+    const char* str = "Hello World";
+    std::string result = StringUtils::toLowerCopy(str);
+    assert(result == "hello world");
+    std::cout << "toLowerCopy test passed.\n";
+}
+
+void testToUpperCopy() 
+{
+    TEST_HEADER
+    const char* str = "Hello World";
+    std::string result = StringUtils::toUpperCopy(str);
+    assert(result == "HELLO WORLD");
+    std::cout << "toUpperCopy test passed.\n";
+}
+
+
 
 //
 // Console

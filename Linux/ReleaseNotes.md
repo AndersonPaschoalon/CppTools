@@ -5,6 +5,7 @@ Author: Anderson Paschoalon
 
 * Major Changes (MAJOR):
     - Signature of `StringUtils::toLower` changed from `static std::string toLower(const char* str)` to `void toLower(std::string& str)`. 
+    - all const std::string were changed to const char *;
 
 * New Features (MINOR):
     - Supports debug on VsCode enviroment. Just run debug_cpptools.
@@ -13,6 +14,7 @@ Author: Anderson Paschoalon
     - StringUtils: new methods.
     - new unity tests.
     - now, supports PLOG.
+    - new class VectorUtils
 
 * Bug Fixes (PATCH):
     - CscParser class fixed;

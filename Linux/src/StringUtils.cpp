@@ -57,46 +57,49 @@ void StringUtils::trim(std::string &s)
     StringUtils::lTrim(s);
 }
 
-std::string StringUtils::ltrimCopy(std::string s)
+std::string StringUtils::ltrimCopy(const char* s)
 {
-    StringUtils::lTrim(s);
-    return s;
+    std::string str(s);
+    StringUtils::lTrim(str);
+    return str;
 }
 
-std::string StringUtils::rtrimCopy(std::string s)
+std::string StringUtils::rtrimCopy(const char*  s)
 {
-    StringUtils::rTrim(s);
-    return s;
+    std::string str(s);
+    StringUtils::rTrim(str);
+    return str;
 }
 
-std::string StringUtils::trimCopy(std::string s)
+std::string StringUtils::trimCopy(const char*  s)
 {
-    StringUtils::trim(s);
-    return s;
+    std::string str(s);
+    StringUtils::trim(str);
+    return str;
 }
 
-const std::string StringUtils::toHexString(unsigned long n)
-{
-    std::ostringstream ss;
-    ss << std::hex << std::uppercase << n;
-    return ss.str();
-}
-
-const std::string StringUtils::toHexString(unsigned int n)
+std::string StringUtils::toHexString(unsigned long n)
 {
     std::ostringstream ss;
     ss << std::hex << std::uppercase << n;
     return ss.str();
 }
 
-const std::string StringUtils::toHexString(unsigned short n)
+std::string StringUtils::toHexString(unsigned int n)
 {
     std::ostringstream ss;
     ss << std::hex << std::uppercase << n;
     return ss.str();
 }
 
-const std::string StringUtils::toString(std::vector<std::string> vec)
+std::string StringUtils::toHexString(unsigned short n)
+{
+    std::ostringstream ss;
+    ss << std::hex << std::uppercase << n;
+    return ss.str();
+}
+
+std::string StringUtils::toString(std::vector<std::string> vec)
 {
     std::string result;
     for (const auto &str : vec)
@@ -111,7 +114,7 @@ const std::string StringUtils::toString(std::vector<std::string> vec)
     return result;
 }
 
-const std::string StringUtils::toString(std::list<std::string> vec)
+std::string StringUtils::toString(std::list<std::string> vec)
 {
     std::string result;
     for (const auto &str : vec)
@@ -126,7 +129,7 @@ const std::string StringUtils::toString(std::list<std::string> vec)
     return result;
 }
 
-const bool StringUtils::toBool(const char *str)
+bool StringUtils::toBool(const char *str)
 {
     // Convert the string to lowercase for case-insensitive comparison
     std::string sStr = str;
@@ -139,16 +142,19 @@ const bool StringUtils::toBool(const char *str)
     return (lowercaseStr == "true" || lowercaseStr == "1");
 }
 
-const bool StringUtils::startsWith(const std::string &fullString, const std::string &startString)
+bool StringUtils::startsWith(const char* fullString, const char* startString)
 {
-    if (fullString.length() < startString.length()) 
+    std::string  fString(fullString);
+    std::string sString(startString);
+
+    if (fString.length() < sString.length()) 
     {
         return false;
     }
-    return fullString.substr(0, startString.length()) == startString;
+    return fString.substr(0, sString.length()) == sString;
 }
 
-const bool StringUtils::endsWith(const char *fullString, const char *endString)
+bool StringUtils::endsWith(const char *fullString, const char *endString)
 {
     int fullLength = strlen(fullString);
     int endLength = strlen(endString);

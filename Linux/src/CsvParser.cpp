@@ -46,7 +46,7 @@ int CsvParser::load(const char *csv_file)
     if (!this->data.empty()) 
     {
         // check if the first char is a comment
-        bool hasHeader = StringUtils::startsWith(data[0][0], "#");
+        bool hasHeader = StringUtils::startsWith(data[0][0].c_str(), "#");
         if(hasHeader)
         {
             this->headers_names = this->data[0];
@@ -263,14 +263,34 @@ void CsvParser::getSize(int &nRows, int &nCols)
 
 bool CsvParser::getNextLine(std::vector<std::string> &nextLine)
 {
-    //static size_t lineCounter = 0;
-
-    if (this->lineCounter >= data.size()) 
+    while(true)
     {
-        return false;  // No more lines
+        if (this->lineCounter >= data.size()) 
+        {
+            return false;  // No more lines
+        }
+
+        // check if the line is empty or it has a single element "" (the parser already does trim internally)
+        if ((data[this->lineCounter].size() == 0) ||
+            ((data[this->lineCounter].size() == 1) && strcmp(data[this->lineCounter][0].c_str(), "") == 0 ))
+        {
+            ++this->lineCounter;
+            continue;
+        }
+
+        nextLine = data[this->lineCounter];
+        ++this->lineCounter;
+        break;
     }
 
-    nextLine = data[this->lineCounter];
-    ++this->lineCounter;
     return true;
+
+    // if (this->lineCounter >= data.size()) 
+    // {
+    //     return false;  // No more lines
+    // }
+    // 
+    // nextLine = data[this->lineCounter];
+    // ++this->lineCounter;
+    // return true;
 }
