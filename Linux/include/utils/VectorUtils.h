@@ -29,8 +29,15 @@ class VectorUtils
         /// @param src CSV string list.
         /// @param separator CSV separator, default is comma (,)
         /// @return 
-        template <typename T>
-        std::vector<T> toVec(const std::string& src, char separator);
+        //template <typename T>
+        //static std::vector<T> toVec(const std::string& src, char separator);
+
+
+        /// @brief 
+        /// @param str 
+        /// @param vec 
+        /// @param separator 
+        static void toVec(const char* str, std::vector<std::string>& vec, char separator=',');
 
     private:
 };

@@ -7,10 +7,12 @@
 void test_StringUtils_startsWith();
 void test_StringUtils_trim();
 void test_StringUtils_bool();
-void testToLower();
-void testToUpper();
-void testToLowerCopy();
-void testToUpperCopy();
+void test_StringUtils_ToLower();
+void test_StringUtils_ToUpper();
+void test_StringUtils_ToLowerCopy();
+void test_StringUtils_ToUpperCopy();
+void test_VectorUtils_toVec();
+
 
 void test_CsvParser_load();
 void test_CsvParser_get();
@@ -35,9 +37,14 @@ int main()
 {
     UNITY_BEGIN();
 
-    RUN_TEST(test_StringUtils_trim);
     RUN_TEST(test_StringUtils_startsWith);
+    RUN_TEST(test_StringUtils_trim);
     RUN_TEST(test_StringUtils_bool);
+    RUN_TEST(test_StringUtils_ToLower);
+    RUN_TEST(test_StringUtils_ToUpper);
+    RUN_TEST(test_StringUtils_ToLowerCopy);
+    RUN_TEST(test_StringUtils_ToUpperCopy);
+    RUN_TEST(test_VectorUtils_toVec);
 
     RUN_TEST(test_CsvParser_load);
     RUN_TEST(test_CsvParser_get);
@@ -261,8 +268,7 @@ void test_StringUtils_bool()
     std::cout << "emptyStr as bool: " << std::boolalpha << StringUtils::toBool(emptyStr.c_str()) << std::endl; // true    
 }
 
-
-void testToLower() 
+void test_StringUtils_ToLower() 
 {
     TEST_HEADER
     std::string str = "Hello World";
@@ -271,7 +277,7 @@ void testToLower()
     std::cout << "toLower test passed.\n";
 }
 
-void testToUpper() 
+void test_StringUtils_ToUpper() 
 {
     TEST_HEADER
     std::string str = "Hello World";
@@ -280,7 +286,7 @@ void testToUpper()
     std::cout << "toUpper test passed.\n";
 }
 
-void testToLowerCopy()
+void test_StringUtils_ToLowerCopy()
 {
     TEST_HEADER
     const char* str = "Hello World";
@@ -289,7 +295,7 @@ void testToLowerCopy()
     std::cout << "toLowerCopy test passed.\n";
 }
 
-void testToUpperCopy() 
+void test_StringUtils_ToUpperCopy() 
 {
     TEST_HEADER
     const char* str = "Hello World";
@@ -298,7 +304,19 @@ void testToUpperCopy()
     std::cout << "toUpperCopy test passed.\n";
 }
 
+void test_VectorUtils_toVec()
+{
+   TEST_HEADER 
+    const char csvString[] = "Alice,Bob,Charlie,David";
+    std::vector<std::string> values;
 
+    VectorUtils::toVec(csvString, values);
+
+    for (const std::string& value : values)
+    {
+        std::cout << value << std::endl;
+    }   
+}
 
 //
 // Console

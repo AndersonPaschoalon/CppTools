@@ -284,13 +284,4 @@ bool CsvParser::getNextLine(std::vector<std::string> &nextLine)
     }
 
     return true;
-
-    // if (this->lineCounter >= data.size()) 
-    // {
-    //     return false;  // No more lines
-    // }
-    // 
-    // nextLine = data[this->lineCounter];
-    // ++this->lineCounter;
-    // return true;
 }
