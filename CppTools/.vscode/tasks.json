@@ -22,7 +22,8 @@
                 "-I${workspaceFolder}/include/csv/",
                 "-I${workspaceFolder}/include/utils/",
                 "-I${workspaceFolder}/include/unity/",
-                "-I${workspaceFolder}/include/thread/"
+                "-I${workspaceFolder}/include/thread/",
+                "-I${workspaceFolder}/include/tlog/"
             ],
             "group": "build"
         }

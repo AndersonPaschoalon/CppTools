@@ -46,5 +46,11 @@
 
 //#include "wild/Logging.h"
 
+//
+// TLog stands for Trivial Logger
+//
+// #include "tlog/tlog.h"
+// using namespace TLog;
+
 
 #endif // __CPP_TOOLS_H__

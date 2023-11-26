@@ -2,7 +2,7 @@
 CXX=g++
 
 # lib include directories
-LIB_INCLUDES=-Iinclude/ -Iinclude/console -Iinclude/csv -Iinclude/utils -Iinclude/unity  -Iinclude/thread
+LIB_INCLUDES=-Iinclude/ -Iinclude/console -Iinclude/csv -Iinclude/utils -Iinclude/unity  -Iinclude/thread -Iinclude/tlog
 
 # Specify the flags to use for compiling C++ code
 CXXFLAGS=-std=c++11 -Wall -Wextra -Wunused -pedantic -fPIC $(LIB_INCLUDES)

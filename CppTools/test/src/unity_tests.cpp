@@ -13,7 +13,6 @@ void test_StringUtils_ToLowerCopy();
 void test_StringUtils_ToUpperCopy();
 void test_VectorUtils_toVec();
 
-
 void test_CsvParser_load();
 void test_CsvParser_get();
 void test_CsvParser_getColumnLabel();
@@ -29,6 +28,8 @@ void test_Console_executeCommandAsync();
 
 void test_plog_helloWorld();
 void test_plog_custom();
+
+void test_tlog();
 
 void cleanup();
 
@@ -415,7 +416,20 @@ void test_plog_custom()
 
 }
 
+//
+// TLog
+// 
 
+void test_tlog()
+{
+    /**
+    TLog::TLoggerConfigure(TLog::TLogLevel::DEBUG, 
+                           TLog::TLogAppenderType::BOTH_APPENDER,
+                           "test_tlog.log", 
+                           '\t');
+    TLOG(TLog::TLogLevel::DEBUG, "Sample log message int:%d, string:%s", 10, "dog and fox");
+    TLOG(TLog::TLogLevel::DEBUG, "Sample log2 message int:%d, string:%s", 10, "wolf and rabbit");
+    */
 
-
+}
 
